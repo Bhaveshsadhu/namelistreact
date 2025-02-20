@@ -1,22 +1,22 @@
 import "./App.css";
+import { useState } from "react";
+import { Form } from "./Components/Form";
+import { List } from "./Components/List";
 
 function App() {
+  const [list, setList] = useState([]);
+
+  const addList = (name) => {
+    setList([...list, name]);
+  };
+
   return (
     <div className="wrapper">
       <div className="userlist">
-        <div>as you typing</div>
         <hr />
-        <div className="form">
-          <input type="text" className="text ml-2"></input>
-          <button className="btn btn-primary">Submit</button>
-        </div>
+        <Form addList={addList}></Form>
         <br />
-        <div>
-          <ul>
-            <li>Bhavesh</li>
-            <li>sadhu</li>
-          </ul>
-        </div>
+        <List list={list}></List>
       </div>
     </div>
   );
